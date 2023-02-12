@@ -1,3 +1,4 @@
+
 import { createClient } from '@supabase/supabase-js'
 import * as matter from 'gray-matter';
 import ReactMarkdown from 'react-markdown'
@@ -6,24 +7,26 @@ import Markdown from '@/components/Markdown/Markdown';
 import Head from './head';
 import Giscus from '@giscus/react';
 import Comments from '@/components/Comments/Comments';
+import invariant from 'tiny-invariant';
+import Image from 'next/image';
 
-const supabaseUrl = process.env.SUPABASE_URL ?? ''
-const supabaseKey = process.env.SUPABASE_KEY ?? ''
+invariant(process.env.SUPABASE_URL, 'Missing env var: SUPABASE_URL')
+invariant(process.env.SUPABASE_KEY, 'Missing env var: SUPABASE_KEY')
 
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
 
 async function getArticle(id: string) {
-    let { data: articles, error } = await supabase
+    let { data: article, error } = await supabase
         .from('articles')
         .select('*')
         .eq('id', id)
+        .single()
     
-    return articles ? articles[0] : null
+    return article ?? {}
 }
 
 export default async function ArticlePage({ params }: any) {
     const article = await getArticle(params.id)
-
 
     return (
         <>
@@ -31,6 +34,12 @@ export default async function ArticlePage({ params }: any) {
                 <title>{article.title}</title>
             </Head>
             <div key={article.id} className={styles.container}>
+                {article.image ? <Image
+                    src={'/images/' + article.image}
+                    alt={article.title}
+                    width={800}
+                    height={400}
+                /> : ''}
                 <Markdown content={article.content} />
                 <Comments />
             </div>
