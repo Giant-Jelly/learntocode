@@ -22,10 +22,24 @@
             transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             padding: 20px;
             border-radius: 5px;
+            position: relative;
 
             &:hover {
                 background-color: #4f535f;
                 box-shadow: 0 0 10px 0 #4f535f;
+            }
+
+            .image {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 5px;
+                position: relative;
+                margin-bottom: 20px;
+
+                @media (max-width: 768px) {
+                    height: 100px;
+                }
             }
 
             h2 {

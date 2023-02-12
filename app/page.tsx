@@ -1,8 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 import Link from 'next/link'
 import styles from './articles.module.scss'
-import invariant from 'tiny-invariant';
 import Head from 'next/head'
+import invariant from 'tiny-invariant';
+import Image from 'next/image';
 
 invariant(process.env.SUPABASE_URL, 'Missing env var: SUPABASE_URL')
 invariant(process.env.SUPABASE_KEY, 'Missing env var: SUPABASE_KEY')
@@ -36,6 +37,13 @@ export default async function ArticlesPage() {
                     {articles.map((article) => (
                         <Link href={"articles/" + article.id} key={article.id}>
                             <div className={ styles.article } key={article.id}>
+                                <div  className={ styles.image }>
+                                    <Image
+                                        src={'/images/' + article.image}
+                                        alt={article.title}
+                                        fill={true}
+                                    />
+                                </div>
                                 <h2>{article.title}</h2>
                                 <p>{article.description}</p>
                                 <span>{convertTags(article.tags)}</span>
