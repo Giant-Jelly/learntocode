@@ -2,18 +2,12 @@
 
     h1 {
         color: #FFF;
-        font-size: 7rem;
-    }
-    
-    h2 {
-        color: #FFF;
-        font-size: 4rem;
-        margin-top: 50px
+        font-size: 5rem;
     }
 
     .articles {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         grid-gap: 50px;
         justify-content: space-between;
         margin: 50px 0;
@@ -35,6 +29,7 @@
             }
 
             h2 {
+                color: #FFF;
                 margin: 0;
                 font-size: 2rem;
             }

@@ -9,6 +9,7 @@ import Giscus from '@giscus/react';
 import Comments from '@/components/Comments/Comments';
 import invariant from 'tiny-invariant';
 import Image from 'next/image';
+import Loading from './loading';
 
 invariant(process.env.SUPABASE_URL, 'Missing env var: SUPABASE_URL')
 invariant(process.env.SUPABASE_KEY, 'Missing env var: SUPABASE_KEY')
@@ -34,12 +35,13 @@ export default async function ArticlePage({ params }: any) {
                 <title>{article.title}</title>
             </Head>
             <div key={article.id} className={styles.container}>
-                {article.image ? <Image
-                    src={'/images/' + article.image}
-                    alt={article.title}
-                    width={800}
-                    height={400}
-                /> : ''}
+                <div className={styles.image}>
+                    {article.image ? <Image
+                        src={'/images/' + article.image}
+                        alt={article.title}
+                        fill={true}
+                    /> : ''}
+                </div>
                 <Markdown content={article.content} />
                 <Comments />
             </div>
