@@ -1,0 +1,46 @@
+.container {
+
+    max-width: 1200px;
+
+    h1 {
+        color: #FFF;
+        font-size: 7rem;
+    }
+
+    h2 {
+        color: #FFF;
+        font-size: 4rem;
+        margin-top: 50px
+    }
+
+    p {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+        margin: 20px 0;
+        color: #daf7f6;
+    }
+
+    a {
+        color: #9ebedc;
+        text-decoration: underline;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: #FFF;
+        }
+    }
+
+    pre {
+        border: solid 1px #3e4d54;
+    }
+
+    code {
+        background-color: #141518;
+        padding: 2px;
+        color: white;
+    }
+
+    note {
+        color: #5D737E;
+    }
+}
