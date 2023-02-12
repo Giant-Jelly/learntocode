@@ -7,19 +7,21 @@ import Head from './head';
 import Giscus from '@giscus/react';
 import Comments from '@/components/Comments/Comments';
 
+const supabaseUrl = process.env.SUPABASE_URL ?? ''
+const supabaseKey = process.env.SUPABASE_KEY ?? ''
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
+const supabase = createClient(supabaseUrl, supabaseKey)
 
-async function getArticle(id) {
+async function getArticle(id: string) {
     let { data: articles, error } = await supabase
         .from('articles')
         .select('*')
         .eq('id', id)
-
-    return articles[0]
+    
+    return articles ? articles[0] : null
 }
 
-export default async function ArticlePage({ params }) {
+export default async function ArticlePage({ params }: any) {
     const article = await getArticle(params.id)
 
 

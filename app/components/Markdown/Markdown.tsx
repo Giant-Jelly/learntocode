@@ -6,10 +6,9 @@ import rangeParser from 'parse-numeric-range'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 
-const syntaxTheme = oneDark
 
 const Highlighter = {
-    code({ node, inline, className, ...props }) {
+    code({ node, inline, className, ...props } : any) {
 
         const match = /language-(\w+)/.exec(className || '')
         const hasMeta = node?.data?.meta
@@ -19,13 +18,14 @@ const Highlighter = {
             const RE = /{([\d,-]+)}/
             const metadata = node.data.meta?.replace(/\s/g, '')
             const strlineNumbers = RE?.test(metadata)
+            //@ts-ignore
             ? RE?.exec(metadata)[1]
             : '0'
             const highlightLines = rangeParser(strlineNumbers)
             const highlight = highlightLines
             const data: string = highlight.includes(applyHighlights)
             ? 'highlight'
-            : null
+            : ''
             return { data }
         } else {
             return {}
@@ -34,7 +34,7 @@ const Highlighter = {
 
         return match ? (
         <SyntaxHighlighter
-            style={syntaxTheme}
+            style={oneDark}
             language={match[1]}
             PreTag="div"
             className="codeStyle"
@@ -50,7 +50,7 @@ const Highlighter = {
     },
 };
 
-export default function Markdown ({ content }){
+export default function Markdown ({ content } : {content: string}){
     return (
         <ReactMarkdown components={Highlighter}>
             {content}
