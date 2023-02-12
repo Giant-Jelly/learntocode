@@ -1,7 +1,9 @@
 .container {
-    height: 50px;
+    height: 100px;
     width: 100%;
-    margin-bottom: 100px;
+    border-bottom: solid 1px #3e4d54;
+    margin-bottom: 50px;
+
 
     div {
         margin: auto;
@@ -11,9 +13,14 @@
         align-items: center;
 
         a {
-            all: unset;
+            text-decoration: none;
             margin: 0 10px;
-            color: #fff
+            color: #fff;
+            transition: opacity 0.2s ease-in-out;
+
+            &:hover {
+                opacity: 0.5;
+            }
         }
     }
 }
