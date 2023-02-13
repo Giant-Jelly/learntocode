@@ -33,6 +33,10 @@ export default async function ArticlePage({ params }: any) {
         <>
             <Head>
                 <title>{article.title}</title>
+                <meta name="description" content={article.description} />
+                <meta name="og:title" property="og:title" content={article.title} />
+                <meta name="og:description" property="og:description" content={article.description} />
+                <meta name="og:image" property="og:image" content={'https://learntocode.blog/images/' + article.image} />
             </Head>
             <div key={article.id} className={styles.container}>
                 <div className={styles.image}>
