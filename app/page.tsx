@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import Link from 'next/link'
 import styles from './articles.module.scss'
-import Head from 'next/head'
+import Head from './head'
 import invariant from 'tiny-invariant';
 import Image from 'next/image';
 
@@ -30,6 +30,10 @@ export default async function ArticlesPage() {
         <>
             <Head>
                 <title>Learn to Code - Helpful Articles on How to Code</title>
+                <meta name="description" content="Learn to code with these helpful articles on how to code. Learn how to code with HTML, CSS, JavaScript, React, Python, and more!" />
+                <meta name="og:title" property="og:title" content="Learn to Code - Helpful Articles on How to Code" />
+                <meta name="og:description" property="og:description" content="Learn to code with these helpful articles on how to code. Learn how to code with HTML, CSS, JavaScript, React, Python, and more!" />
+                <meta name="og:image" property="og:image" content="https://www.learntocode.dev/images/og-image.webp" />
             </Head>
             <div className={ styles.container}>
                 <h1>Articles</h1>
