@@ -5,6 +5,7 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import rangeParser from 'parse-numeric-range'
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 
 const Highlighter = {
@@ -52,7 +53,7 @@ const Highlighter = {
 
 export default function Markdown ({ content } : {content: string}){
     return (
-        <ReactMarkdown components={Highlighter}>
+        <ReactMarkdown components={Highlighter} rehypePlugins={[rehypeRaw]}>
             {content}
         </ReactMarkdown>
     )

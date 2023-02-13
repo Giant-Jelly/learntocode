@@ -16,11 +16,11 @@ invariant(process.env.SUPABASE_KEY, 'Missing env var: SUPABASE_KEY')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY)
 
-async function getArticle(id: string) {
+async function getArticle(slug: string) {
     let { data: article, error } = await supabase
         .from('articles')
         .select('*')
-        .eq('id', id)
+        .eq('slug', slug)
         .single()
     
     return article ?? {}
