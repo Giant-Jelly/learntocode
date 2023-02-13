@@ -5,6 +5,13 @@
         font-size: 5rem;
     }
 
+    p {
+        font-size: 1.3rem;
+        line-height: 2rem;
+        margin: 20px 0;
+        color: #daf7f6;
+    }
+
     .articles {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

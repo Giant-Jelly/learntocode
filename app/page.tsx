@@ -37,6 +37,7 @@ export default async function ArticlesPage() {
             </Head>
             <div className={ styles.container}>
                 <h1>Articles</h1>
+                <p>Welcome to the ultimate coding hub! Here, you'll find comprehensive guides and tutorials on how to code in multiple programming languages. Whether you're a beginner or an advanced developer, our articles cover everything from the basics to the most complex topics, making it easy for you to improve your skills and reach your coding goals. Start exploring today and get ready to take your coding journey to the next level!</p>
                 <div className={ styles.articles}>
                     {articles.map((article) => (
                         <Link href={"articles/" + article.id} key={article.id}>
