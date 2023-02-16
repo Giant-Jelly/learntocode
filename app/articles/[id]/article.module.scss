@@ -46,6 +46,20 @@
         }
     }
 
+    h3 {
+        color: #FFF;
+        font-size: 3rem;
+        margin-top: 50px;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+
+        @media (max-width: 480px) {
+            font-size: 1.5rem;
+        }
+    }
+
     p {
         font-size: 1.3rem;
         line-height: 2rem;
