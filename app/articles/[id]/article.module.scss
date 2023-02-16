@@ -77,6 +77,18 @@
         }
     }
 
+    ul {
+        list-style: disc;
+        margin-left: 50px;
+
+        li {
+            margin: 10px 0;
+            font-size: 1.3rem;
+            line-height: 2rem;
+            color: #bfc8cc;
+        }
+    }
+
     pre {
         border: solid 1px #3e4d54;
     }
